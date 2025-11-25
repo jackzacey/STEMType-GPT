@@ -1,7 +1,7 @@
 
 
 import { allTerms } from "../../../data/terms";
-import UnitSelector from "../../components/UnitSelector";
+import UnitSelector from "../../components/UnitSelector"; // <<< ADD THIS LINE
 import { useRouter } from "next/navigation";
 
 export function generateStaticParams() {
