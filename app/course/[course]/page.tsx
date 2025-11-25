@@ -1,5 +1,4 @@
-// app/course/[course]/page.tsx
-'use client';
+
 
 import { allTerms } from "../../../data/terms";
 import UnitSelector from "../../components/UnitSelector";
