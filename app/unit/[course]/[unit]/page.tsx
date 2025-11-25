@@ -1,36 +1,32 @@
 // app/unit/[course]/[unit]/page.tsx
-'use client';
-
-import { allTerms } from "../../../../data/terms";
-import TypingEngine from "../../../components/TypingEngine";
-
-export function generateStaticParams() {
-  return allTerms.map(t => ({
-    course: t.course,
-    unit: encodeURIComponent(t.unit),
-  }));
+export async function generateStaticParams() {
+  // compute all { course, unit } combinations
+  return [
+    { course: "math", unit: "1" },
+    { course: "science", unit: "2" },
+  ];
 }
 
-export default function UnitPage({
-  params,
-}: {
-  params: { course: string; unit: string };
-}) {
+export default async function UnitPage({ params }) {
   const { course, unit } = params;
-
-  const realUnit = decodeURIComponent(unit);
-
-  const termsForUnit = allTerms.filter(
-    (t) => t.course === course && t.unit === realUnit
-  );
-
+  // this part runs on server
   return (
-    <main className="min-h-screen bg-black text-white flex flex-col items-center">
-      <h1 className="text-5xl my-8">
-        {course} — {realUnit}
-      </h1>
+    <div>
+      <h1>Unit {unit} in {course}</h1>
+      <ClientInteractive part={{course,unit}} />
+    </div>
+  );
+}
 
-      <TypingEngine terms={termsForUnit} />
-    </main>
+// app/unit/[course]/[unit]/ClientInteractive.tsx
+"use client";
+import { useState } from "react";
+export default function ClientInteractive({ part }) {
+  const [count, setCount] = useState(0);
+  return (
+    <div>
+      <p>Interactive UI for {part.course} / {part.unit}</p>
+      <button onClick={() => setCount(count+1)}>Clicked {count} times</button>
+    </div>
   );
 }
