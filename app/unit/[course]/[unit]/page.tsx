@@ -1,4 +1,6 @@
 // app/unit/[course]/[unit]/page.tsx
+import ClientInteractive from "./ClientInteractive"; // <<< THIS WAS MISSING
+
 export async function generateStaticParams() {
   // compute all { course, unit } combinations
   return [
@@ -13,20 +15,7 @@ export default async function UnitPage({ params }) {
   return (
     <div>
       <h1>Unit {unit} in {course}</h1>
-      <ClientInteractive part={{course,unit}} />
-    </div>
-  );
-}
-
-// app/unit/[course]/[unit]/ClientInteractive.tsx
-"use client";
-import { useState } from "react";
-export default function ClientInteractive({ part }) {
-  const [count, setCount] = useState(0);
-  return (
-    <div>
-      <p>Interactive UI for {part.course} / {part.unit}</p>
-      <button onClick={() => setCount(count+1)}>Clicked {count} times</button>
+      <ClientInteractive part={{ course, unit }} />
     </div>
   );
 }
