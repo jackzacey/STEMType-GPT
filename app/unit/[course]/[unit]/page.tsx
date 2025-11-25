@@ -1,5 +1,4 @@
-// app/unit/[course]/[unit]/page.tsx
-import ClientInteractive from "./ClientInteractive"; // <<< THIS WAS MISSING
+import ClientInteractive from "./ClientInteractive"; // <<< ADD THIS
 
 export async function generateStaticParams() {
   // compute all { course, unit } combinations
@@ -11,11 +10,10 @@ export async function generateStaticParams() {
 
 export default async function UnitPage({ params }) {
   const { course, unit } = params;
-  // this part runs on server
   return (
     <div>
       <h1>Unit {unit} in {course}</h1>
-      <ClientInteractive part={{ course, unit }} />
+      <ClientInteractive part={{course,unit}} />
     </div>
   );
 }
