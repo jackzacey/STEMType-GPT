@@ -1,8 +1,8 @@
 'use client';
 import { useState } from 'react';
 import { allTerms, Term } from '../data/terms';
-import CourseSelector from './components/CourseSelector';
-import TypingEngine from './components/TypingEngine';
+import CourseSelector from '@/components/CourseSelector'
+import TypingEngine from '@/components/TypingEngine'
 
 const courses = [
   'FreshmanBio',
