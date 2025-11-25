@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Optional: add font globally if desired */
+body {
+  font-family: 'JetBrains Mono', monospace;
+}
